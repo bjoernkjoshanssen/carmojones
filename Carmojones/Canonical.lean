@@ -211,7 +211,6 @@ def canon_II {n : ℕ} (A : Finset (Fin n)) : Finset (Fin n) → Finset (Finset 
 lemma canon_II_symmetry {n : ℕ} (A : Finset (Fin n)) :
   canon_II A = (λ X ↦ ite (X ∩ A = ∅) ∅ ((filter (λ Y ↦ X ∩ A = X ∩ Y)) univ)) := by
     unfold canon_II
-    congr
     ext x y
     split_ifs;tauto;simp;tauto
 
