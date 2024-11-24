@@ -193,7 +193,8 @@ section Venn_lemmas
 
 end Venn_lemmas
 
-def canon {n : ℕ} (A : Finset (Fin n)) : Finset (Fin n) → Finset (Finset (Fin n)) :=
+def canon {n : ℕ} (A : Finset (Fin n)) :
+Finset (Fin n) → Finset (Finset (Fin n)) :=
   λ S ↦ ite (S ∩ A = ∅) ∅ ((filter (λ T ↦ S ∩ A ⊆ T)) univ)
 
 /-- The `canon` models, which say that
@@ -205,8 +206,10 @@ CJ 2022 presumably prefer (II) and 5e.
 We make a CJ style `canon_II` by letting `ob X = {Y | Y ∩ X = A ∩ X}`.
 My 2017 (II) corresponds to:
 -/
-def canon_II {n : ℕ} (A : Finset (Fin n)) : Finset (Fin n) → Finset (Finset (Fin n)) :=
-  λ X ↦ ite (X ∩ A = ∅) ∅ ((filter (λ Y ↦ X ∩ Y = X ∩ A)) univ)
+def canon_II {n : ℕ} (A : Finset (Fin n)) :
+Finset (Fin n) → Finset (Finset (Fin n)) :=
+  λ X ↦ ite (X ∩ A = ∅) ∅
+  ((filter (λ Y ↦ X ∩ Y = X ∩ A)) univ)
 
 lemma canon_II_symmetry {n : ℕ} (A : Finset (Fin n)) :
   canon_II A = (λ X ↦ ite (X ∩ A = ∅) ∅ ((filter (λ Y ↦ X ∩ A = X ∩ Y)) univ)) := by

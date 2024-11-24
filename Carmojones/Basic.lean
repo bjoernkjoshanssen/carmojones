@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.Order.SetNotation
 import Mathlib.Data.Set.Basic
 
 open Set
@@ -60,10 +60,10 @@ lemma first_equality {β : Set (Set U)}
       left
       intros b hb
       have hb2 := ha b
-      apply hb2 at hb
+    --   apply hb2 at hb
       constructor
       tauto --exact hb.left
-      cases' hb with b1 b2
+      cases' hb2 hb with b1 b2
       exact b1.right
       exfalso
       exact hx b2
@@ -71,9 +71,11 @@ lemma first_equality {β : Set (Set U)}
       intros b hb
       cases' ha with f1 f2
       left
-      apply f1 at hb
+      apply f1
+      exact hb
+
       tauto
-      tauto
+
 
 lemma subset_of_Union  {U : Type}
  {ob : Set U → Set (Set U)}
@@ -83,8 +85,8 @@ lemma subset_of_Union  {U : Type}
 {h3 : ∀ Z ∈ β, X ∈ ob Z}
 : {(⋃₀ β \ Z) ∪ X | Z ∈ β} ⊆ ob (⋃₀ β) := by
    intros a ha
-   apply mem_setOf.mp at ha
-   obtain ⟨Y, hY⟩ := ha
+   simp_all
+   obtain ⟨Y,hY⟩ := mem_setOf.mp ha
    have X_in_obY := h3 Y hY.left
    have Y_subset_H : Y ⊆ (⋃₀β) := by
       intros y hy
@@ -148,8 +150,7 @@ lemma inter_not_empty
       intro f
       have obvious : X ∩ Z = ∅ ∩ Z := by (simp; exact f)
       have hc := b5 Z ∅ X obvious
-      apply hc.mp at hZ2
-      exact a5 Z hZ2
+      tauto
    have xz_subset_xh : X ∩ Z ⊆ X ∩ ⋃₀β := by
       intros a ha
       exact And.intro (ha.left) (mem_sUnion.mpr (Exists.intro Z (And.intro hZ ha.right)))
