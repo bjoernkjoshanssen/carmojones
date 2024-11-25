@@ -63,18 +63,15 @@ lemma first_equality {β : Set (Set U)}
     --   apply hb2 at hb
       constructor
       tauto --exact hb.left
-      cases' hb2 hb with b1 b2
-      exact b1.right
+      cases hb2 hb
+      tauto
       exfalso
-      exact hx b2
+      tauto
       intro ha
       intros b hb
-      cases' ha with f1 f2
-      left
-      apply f1
-      exact hb
-
-      tauto
+      cases ha with
+      | inl h => left; have := h b;tauto
+      | inr h => tauto
 
 
 lemma subset_of_Union  {U : Type}
