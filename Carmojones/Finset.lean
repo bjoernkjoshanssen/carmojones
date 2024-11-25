@@ -2,7 +2,10 @@ import Mathlib.RingTheory.Int.Basic
 import Mathlib.Data.Finset.Basic
 import Carmojones.Basic
 
-/-
+/-!
+
+## Canonical models of CJ 2022 axioms
+
 We demonstrate that Carmo and Jones 2022 axioms 5(a)(b)(c)(g) do not imply their 5(d) or 5(f).
 We also show that 5(a)(b)(c)(d)(f)(g) together do not imply 5(e).
 This is done using two-world model counterexamples.

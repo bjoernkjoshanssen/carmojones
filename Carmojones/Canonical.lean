@@ -3,8 +3,9 @@ import Mathlib.Data.Finset.Basic
 import Carmojones.Basic
 import Carmojones.Finset
 
-/-
-Canonical models of Carmo and Jones' systems
+/-!
+
+## Canonical models of Carmo and Jones' systems
 
 Abstract: We show that the two approaches sketched in K17
 are both consistent with CJ22.
@@ -17,6 +18,16 @@ where A worlds, A ⊆ B, are the best and B \ A worlds the second best.
 Thus, if X ∩ A = ∅ but X ∩ B ≠ ∅, we let F(X) = X ∩ B.
 
 Results:
+
+| Axiom    | canon   | canon_II | canon₂ | canon₂_II |
+| -------- | ------- | -------- | ------ | --------- |
+| A        | ✓       | ✓        | ✓      | ✓         |
+| B        | ✓       | ✓        | ✓      | ✓         |
+| C        | ✓       | ✓        | ✓      | ✓         |
+| D        | thus ✓  | ×        | ✓      | thus ×    |
+| E        | ×       | ✓        | thus × | ✓         |
+| F        | ✓       | ✓        | ✓      | ×!        |
+| G        | ✓       | ✓        | ✓      | ✓         |
 
 Axiom  canon canon_II  canon₂  canon₂_II
 A       ✓      ✓          ✓      ✓
