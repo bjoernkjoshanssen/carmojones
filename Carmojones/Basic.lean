@@ -1,6 +1,15 @@
 import Mathlib.Order.SetNotation
 import Mathlib.Data.Set.Basic
 
+/-!
+## Carmo and Jones' system(s) of deontic logic for contrary-to-duty obligations
+
+ - Carmo and Jones 2002
+ - Carmo and Jones 2013
+ - Kjos-Hanssen 2017
+ - Carmo and Jones 2022
+-/
+
 open Set
 
 -- Carmo and Jones' axioms
@@ -46,10 +55,8 @@ theorem bd5 (b5 : CJ5b ob) (d5 : CJ5d ob) : CJ5bd ob := by
     exact (b5 X Y (Y ∩ X) YZX_eq_YX).mpr Y_in_obX
  exact (b5 Z ((Z \ X) ∪ Y) ((Z \ X) ∪ (Y ∩ X)) sets_eq).mp (d5 X (Y ∩ X) Z input1 input2 X_sub_Z)
 
-lemma first_equality {β : Set (Set U)}
-{X : Set U}
-{h2 : β ≠ ∅}
-: ⋂₀ {x | ∃ Z ∈ β, ⋃₀ β \ Z ∪ X = x}
+lemma first_equality {β : Set (Set U)} {X : Set U} :
+  ⋂₀ {x | ∃ Z ∈ β, ⋃₀ β \ Z ∪ X = x}
 = ⋂₀ {x | ∃ Z ∈ β, ⋃₀ β \ Z = x} ∪ X := by
       ext x
       simp
@@ -118,7 +125,6 @@ lemma defX
       tauto
     rewrite [first_equality, second_equality]
     simp
-    exact h2
 
 lemma not_empty {β : Set (Set U)} {X : Set U} {h2 : β ≠ ∅} {h3 : ∀ Z ∈ β, X ∈ ob Z}
 (a5 : CJ5a ob)

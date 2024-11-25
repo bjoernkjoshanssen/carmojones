@@ -105,11 +105,13 @@ section Venn_lemmas
 
   lemma subset_same {n : ℕ} {B X Y Z : Finset (Fin n)}
     (h₀ : Y ∩ X = Z ∩ X) : X ∩ B ⊆ Y ↔ X ∩ B ⊆ Z := by
-        aesop
-        . calc X ∩ B ⊆ Y ∩ X := by intro x hx;simp;aesop
+        constructor
+        . intro
+          calc X ∩ B ⊆ Y ∩ X := by intro x hx;simp;aesop
           _ = Z ∩ X := by rw [h₀]
           _ ⊆ Z := by intro x;simp;tauto
-        . calc X ∩ B ⊆ Z ∩ X := by intro x hx;simp;aesop
+        . intro
+          calc X ∩ B ⊆ Z ∩ X := by intro x hx;simp;aesop
           _ = Y ∩ X := by rw [h₀]
           _ ⊆ Y := by intro x;simp;tauto
 
@@ -365,8 +367,8 @@ theorem canon₂_A5 {n:ℕ} (A B : Finset (Fin n)) : A5 (canon₂ A B) := by
   unfold canon₂
   intro X
   split_ifs with h₀ h₁;tauto;simp;contrapose h₀;simp at *;
-  apply subset_empty.mp;tauto;
-  simp;contrapose h₁;simp;apply subset_empty.mp;tauto;
+  apply subset_empty.mp;simp_all
+  simp;contrapose h₁;simp;apply subset_empty.mp;simp_all
 
 
 theorem canon₂_B5 {n:ℕ} (A B : Finset (Fin n)) : B5 (canon₂ A B) := by
@@ -434,7 +436,7 @@ theorem not_canon₂_G: ∃ n:ℕ, ∃ (A B : Finset (Fin n)), A ⊆ B ∧ ¬ G5
   use 3
   use filter (λ i ↦ i = 2) univ
   use filter (λ i ↦ i = 0 ∨ i = 2) univ
-  simp
+  -- simp
   constructor
   . trivial
   . unfold G5 canon₂
