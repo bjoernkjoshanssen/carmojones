@@ -7,36 +7,32 @@ import Carmojones.Finset
 
 ## Canonical models of Carmo and Jones' systems
 
-Abstract: We show that the two approaches sketched in K17
-are both consistent with CJ22.
+Abstract: We show that the two approaches sketched in
 
-Preferably, we let F(X) = X ∩ A for a fixed set A.
+* Kjos-Hanssen 2017
 
-However, to incorporate contrary-to-duty obligations we introduce a predicate B,
-where A worlds, A ⊆ B, are the best and B \ A worlds the second best.
+are both consistent with
 
-Thus, if X ∩ A = ∅ but X ∩ B ≠ ∅, we let F(X) = X ∩ B.
+* Carmo Jones 2022.
 
-Results:
+Preferably, we let `F(X) = X ∩ A` for a fixed set `A`.
 
-| Axiom    | canon   | canon_II | canon₂ | canon₂_II |
-| -------- | ------- | -------- | ------ | --------- |
-| A        | ✓       | ✓        | ✓      | ✓         |
-| B        | ✓       | ✓        | ✓      | ✓         |
-| C        | ✓       | ✓        | ✓      | ✓         |
-| D        | thus ✓  | ×        | ✓      | thus ×    |
-| E        | ×       | ✓        | thus × | ✓         |
-| F        | ✓       | ✓        | ✓      | ×!        |
-| G        | ✓       | ✓        | ✓      | ✓         |
+However, to incorporate contrary-to-duty obligations we introduce a predicate `B`,
+where `A` worlds, `A ⊆ B`, are the best and `B \ A` worlds the second best.
 
-Axiom  canon canon_II  canon₂  canon₂_II
-A       ✓      ✓          ✓      ✓
-B       ✓      ✓          ✓      ✓
-C       ✓      ✓          ✓      ✓
-D  thus ✓      ×          ✓     thus ×
-E       ×      ✓        thus ×   ✓
-F       ✓      ✓          ✓      ×!
-G       ✓      ✓          ×!     ✓
+Thus, if `X ∩ A = ∅` but `X ∩ B ≠ ∅`, we let `F(X) = X ∩ B`.
+
+We prove the following results about which axioms hold in which model.
+
+| Axiom \ Model | `canon` | `canon_II` | `canon₂` | `canon₂_II` |
+| ------------- | ------- | ---------- | -------- | ----------- |
+| A             | ✓       | ✓          | ✓        | ✓           |
+| B             | ✓       | ✓          | ✓        | ✓           |
+| C             | ✓       | ✓          | ✓        | ✓           |
+| D             | thus ✓  | ×          | ✓        | thus ×      |
+| E             | ×       | ✓          | thus ×   | ✓           |
+| F             | ✓       | ✓          | ✓        | ×!          |
+| G             | ✓       | ✓          | ×!       | ✓           |
 
 -/
 
