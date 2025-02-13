@@ -40,8 +40,6 @@ def CJ5f (ob : Set U → Set (Set U)) :=
 --Lemma II.2.1 --
 theorem bd5 (b5 : CJ5b ob) (d5 : CJ5d ob) : CJ5bd ob := by
  intro X Y Z h
- have Y_in_obX := h.left
- have X_sub_Z := h.right
  have YZX_eq_YX : (Y ∩ X) ∩ X = Y ∩ X := by
     ext
     simp
@@ -52,8 +50,8 @@ theorem bd5 (b5 : CJ5b ob) (d5 : CJ5d ob) : CJ5bd ob := by
  have input1 : Y ∩ X ⊆ X := by
     simp
  have input2 : Y ∩ X ∈ ob X := by
-    exact (b5 X Y (Y ∩ X) YZX_eq_YX).mpr Y_in_obX
- exact (b5 Z ((Z \ X) ∪ Y) ((Z \ X) ∪ (Y ∩ X)) sets_eq).mp (d5 X (Y ∩ X) Z input1 input2 X_sub_Z)
+    exact (b5 X Y (Y ∩ X) YZX_eq_YX).mpr h.1
+ exact (b5 Z ((Z \ X) ∪ Y) ((Z \ X) ∪ (Y ∩ X)) sets_eq).mp (d5 X (Y ∩ X) Z input1 input2 h.2)
 
 lemma first_equality {β : Set (Set U)} {X : Set U} :
   ⋂₀ {x | ∃ Z ∈ β, ⋃₀ β \ Z ∪ X = x}
